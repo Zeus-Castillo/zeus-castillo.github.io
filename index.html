@@ -37,8 +37,7 @@ a{color:inherit}
 /* top bar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar .wrap{display:flex;align-items:center;gap:24px;height:60px}
-.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em}
-.mark b{display:grid;place-items:center;width:34px;height:34px;border:2px solid var(--accent);color:var(--accent);font-size:16px;letter-spacing:.04em}
+.mark{text-decoration:none;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.02em;color:var(--accent)}
 .nav{display:flex;gap:20px;margin-left:auto}
 .nav a{text-decoration:none;font-size:15px;color:var(--muted);font-weight:500}
 .nav a:hover{color:var(--ink)}
@@ -165,7 +164,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#top" aria-label="Zeus Castillo"><b>ZC</b><span>Zeus Castillo</span></a>
+    <a class="mark" href="#top">Zeus Castillo</a>
     <nav class="nav" aria-label="Main">
       <a href="#servicios" data-t="nav.services"></a>
       <a href="#proyectos" data-t="nav.projects"></a>
@@ -184,12 +183,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 <main id="top">
   <div class="wrap hero">
     <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-t="hero.status"></span></p>
-      <h1 data-t="hero.title" data-html></h1>
+            <h1 data-t="hero.title" data-html></h1>
       <p class="lede" data-t="hero.lede"></p>
       <div class="ctas">
         <a class="btn primary" href="#contacto" data-t="hero.cta"></a>
-        <a class="btn" href="#proyectos" data-t="hero.cta2"></a>
       </div>
       <ul class="facts" id="facts"></ul>
     </div>
@@ -319,7 +316,7 @@ const I18N = {
       {id:"supersun",sector:"Ciencia e I+D",where:"ILL · Grenoble",when:"2021–2025",title:"Fuente de neutrones ultrafríos SuperSUN",text:"Actualicé software y hardware para integrar nuevos equipos, desarrollé una HMI nueva con acceso remoto, programé secuencias automáticas para un control de proceso preciso y redacté la FDS.",tags:["PLC","HMI","Secuencias","FDS"],links:[["Ver el instrumento",L.supersun]]},
       {id:"ariane",sector:"Espacio",where:"CSG · Kourou",when:"2016–2021",title:"Ariane 5 y Ariane 6: control de tierra",text:"Diseño, especificaciones, software y FAT de sistemas de control del segmento de tierra de Ariane 5 (ELA-3 y complejo de satélites EPCU). Después, puesta en marcha y SAT de los sistemas de control de tierra en la nueva plataforma de Ariane 6.",tags:["Modicon M580","Beckhoff TwinCAT","FDS","FAT","SAT"]},
       {id:"helium",sector:"Freelance · Ciencia",where:"ILL · Grenoble",when:"2024–2026",title:"Gestión del helio del ILL",text:"Automatización de la gestión del helio: actualización del sistema que recupera el helio de los experimentos y lo trasvasa a los licuefactores (depuración y reescritura del PLC, actualización de la HMI, nuevos modos de operación, alarmas y notificaciones por email, FDS), y pesaje automático de los dewars de helio líquido, con lector de código e indicador de báscula por Modbus, informes, interfaz de usuario y protocolo TCP a medida con la aplicación de los usuarios.",tags:["Modicon M340","Modicon M262","Modbus","TCP a medida","FDS"]},
-      {id:"secop",sector:"Freelance · Ciencia",where:"ISSE",when:"2024–hoy",title:"SECoP para PLC",text:"Implementación en PLC de SECoP, el protocolo de comunicación con entornos de muestra coordinado por la ISSE, actualizada para cumplir la v2.0. Librería multiplataforma y generador de código que crea el nodo SEC a partir de su descripción.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["Especificación SECoP",L.secop],["ISSE",L.isse]]},
+      {id:"secop",sector:"Freelance · Ciencia",where:"ISSE",when:"2024–hoy",title:"SECoP para PLC",text:"Implementación en PLC de SECoP, el protocolo de comunicación con entornos de muestra coordinado por la ISSE, actualizada para cumplir la v2.0. Librería multiplataforma y generador de código que crea el nodo SEC a partir de su descripción.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["Especificación SECoP",L.secop],["ISSE",L.isse],["GitHub SECoP-PLC","https://github.com/SampleEnvironment/SECoP-PLC"]]},
       {id:"canopen",sector:"Freelance · Ciencia",where:"Maxon EPOS2",when:"2026",title:"Librería CANopen para bombas de alta presión",text:"Librería CODESYS generada a partir de la existente para Beckhoff TwinCAT, para el controlador de posición EPOS2 de Maxon (CiA 402) sobre Schneider M251, con la traducción automatizada en Python.",tags:["CANopen","CiA 402","CODESYS","Python"],links:[["Maxon EPOS2",L.epos2]]},
       {id:"naval",sector:"Naval",where:"GE · Rugby",when:"2011–2013",title:"Banco de pruebas eléctrico para el portaaviones Queen Elizabeth",text:"PLC y HMI de una instalación de pruebas en tierra que conecta inductancias y condensadores a la red para ensayar la carga eléctrica del sistema de potencia del buque.",tags:["GE Fanuc","HMI","Naval"]}
     ],
@@ -377,7 +374,7 @@ const I18N = {
       {id:"supersun",sector:"Science & R&D",where:"ILL · Grenoble",when:"2021–2025",title:"SuperSUN ultra-cold neutron source",text:"Upgraded software and hardware to integrate new equipment, built a new remote-access HMI, programmed automated sequences for precise process control and wrote the FDS.",tags:["PLC","HMI","Sequences","FDS"],links:[["See the instrument",L.supersun]]},
       {id:"ariane",sector:"Space",where:"CSG · Kourou",when:"2016–2021",title:"Ariane 5 and Ariane 6 ground control",text:"Design, specifications, software and FAT of ground segment control systems for Ariane 5 (ELA-3 and the EPCU satellite complex). Then commissioning and SAT of the ground control systems at the new Ariane 6 launch site.",tags:["Modicon M580","Beckhoff TwinCAT","FDS","FAT","SAT"]},
       {id:"helium",sector:"Freelance · Science",where:"ILL · Grenoble",when:"2024–2026",title:"ILL helium management",text:"Automation of helium management: upgrade of the system that recovers helium from experiments and transfers it to the liquefiers (PLC debug and rewrite, HMI update, new operating modes, alarms and email notifications, FDS), and automated weighing of liquid helium dewars, with code reader and scale indicator over Modbus, reporting, user interface and a custom TCP protocol to the users' application.",tags:["Modicon M340","Modicon M262","Modbus","Custom TCP","FDS"]},
-      {id:"secop",sector:"Freelance · Science",where:"ISSE",when:"2024–now",title:"SECoP for PLCs",text:"PLC implementation of SECoP, the sample environment communication protocol coordinated by the ISSE, upgraded for v2.0 compliance. A multi-platform library plus a code generator that builds the SEC node from its description.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["SECoP specification",L.secop],["ISSE",L.isse]]},
+      {id:"secop",sector:"Freelance · Science",where:"ISSE",when:"2024–now",title:"SECoP for PLCs",text:"PLC implementation of SECoP, the sample environment communication protocol coordinated by the ISSE, upgraded for v2.0 compliance. A multi-platform library plus a code generator that builds the SEC node from its description.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["SECoP specification",L.secop],["ISSE",L.isse],["GitHub SECoP-PLC","https://github.com/SampleEnvironment/SECoP-PLC"]]},
       {id:"canopen",sector:"Freelance · Science",where:"Maxon EPOS2",when:"2026",title:"CANopen library for high-pressure pumps",text:"CODESYS library generated from the existing Beckhoff TwinCAT one, for the Maxon EPOS2 positioning controller (CiA 402) on Schneider M251, with the translation automated in Python.",tags:["CANopen","CiA 402","CODESYS","Python"],links:[["Maxon EPOS2",L.epos2]]},
       {id:"naval",sector:"Naval",where:"GE · Rugby",when:"2011–2013",title:"Electrical test facility for the Queen Elizabeth aircraft carrier",text:"PLC and HMI for an onshore test facility that switches inductors and capacitors onto the grid to test the electrical load of the ship's power system.",tags:["GE Fanuc","HMI","Naval"]}
     ],
@@ -435,7 +432,7 @@ const I18N = {
       {id:"supersun",sector:"Science et R&D",where:"ILL · Grenoble",when:"2021–2025",title:"Source de neutrons ultra-froids SuperSUN",text:"J'ai fait évoluer le logiciel et le matériel pour intégrer de nouveaux équipements, développé une nouvelle IHM avec accès à distance, programmé des séquences automatiques pour un pilotage précis du procédé et rédigé la FDS.",tags:["Automate","IHM","Séquences","FDS"],links:[["Voir l'instrument",L.supersun]]},
       {id:"ariane",sector:"Spatial",where:"CSG · Kourou",when:"2016–2021",title:"Ariane 5 et Ariane 6 : contrôle-commande sol",text:"Conception, spécifications, logiciel et FAT des systèmes de contrôle-commande du segment sol d'Ariane 5 (ELA-3 et ensemble de préparation des charges utiles EPCU). Puis mise en service et SAT du contrôle-commande sol du nouveau pas de tir Ariane 6.",tags:["Modicon M580","Beckhoff TwinCAT","FDS","FAT","SAT"]},
       {id:"helium",sector:"Freelance · Science",where:"ILL · Grenoble",when:"2024–2026",title:"Gestion de l'hélium de l'ILL",text:"Automatisation de la gestion de l'hélium : mise à niveau du système qui récupère l'hélium des expériences et le transfère vers les liquéfacteurs (débogage et réécriture de l'automate, mise à jour de l'IHM, nouveaux modes de fonctionnement, alarmes et notifications par e-mail, FDS), et pesée automatique des dewars d'hélium liquide, avec lecteur de code et indicateur de pesage en Modbus, rapports, interface utilisateur et protocole TCP sur mesure vers l'application des utilisateurs.",tags:["Modicon M340","Modicon M262","Modbus","TCP sur mesure","FDS"]},
-      {id:"secop",sector:"Freelance · Science",where:"ISSE",when:"2024–auj.",title:"SECoP pour automates",text:"Implémentation automate de SECoP, le protocole de communication des environnements échantillon coordonné par l'ISSE, mise en conformité avec la v2.0. Bibliothèque multiplateforme et générateur de code qui construit le nœud SEC à partir de sa description.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["Spécification SECoP",L.secop],["ISSE",L.isse]]},
+      {id:"secop",sector:"Freelance · Science",where:"ISSE",when:"2024–auj.",title:"SECoP pour automates",text:"Implémentation automate de SECoP, le protocole de communication des environnements échantillon coordonné par l'ISSE, mise en conformité avec la v2.0. Bibliothèque multiplateforme et générateur de code qui construit le nœud SEC à partir de sa description.",tags:["SECoP v2.0","CODESYS","Python","TCP · JSON"],links:[["Spécification SECoP",L.secop],["ISSE",L.isse],["GitHub SECoP-PLC","https://github.com/SampleEnvironment/SECoP-PLC"]]},
       {id:"canopen",sector:"Freelance · Science",where:"Maxon EPOS2",when:"2026",title:"Bibliothèque CANopen pour pompes haute pression",text:"Bibliothèque CODESYS générée à partir de celle existante pour Beckhoff TwinCAT, pour le contrôleur de positionnement Maxon EPOS2 (CiA 402) sur Schneider M251, avec une traduction automatisée en Python.",tags:["CANopen","CiA 402","CODESYS","Python"],links:[["Maxon EPOS2",L.epos2]]},
       {id:"naval",sector:"Naval",where:"GE · Rugby",when:"2011–2013",title:"Banc d'essai électrique pour le porte-avions Queen Elizabeth",text:"Automate et IHM d'une installation d'essai à terre qui connecte des inductances et des condensateurs au réseau pour tester la charge électrique du système de puissance du navire.",tags:["GE Fanuc","IHM","Naval"]}
     ],
